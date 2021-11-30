@@ -1,0 +1,6 @@
+{
+    "deny": [
+        "www.youtube.com",
+        "www.amazon.co.jp"
+    ]
+}
