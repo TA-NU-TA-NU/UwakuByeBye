@@ -1,4 +1,6 @@
-﻿$DIR = Get-Location 
+﻿Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+
+$DIR = Get-Location 
 $JSONFILE = Join-Path -Path $DIR -ChildPath ".\denyList.json"
 $hosts = "C:\Windows\System32\drivers\etc\hosts"
 
