@@ -1,0 +1,6 @@
+{
+    "deny": [
+        "www.dammy.com",
+        "www.nothing.co.jp"
+    ]
+}

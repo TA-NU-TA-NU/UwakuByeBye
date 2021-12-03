@@ -1,4 +1,3 @@
-﻿# クラスを定義します
 class uwakuByeByeController{
    # 静的プロパティ
    $denyList
@@ -18,23 +17,21 @@ class uwakuByeByeController{
        }
         
        $strBuilder += "#End of Section by uwakuByeByeController`r`n" 
-       $strBuilder >> $this.hosts
+       $strBuilder | Out-File $this.hosts -Encoding UTF8 -Append
    }
 
    # delete
    [void]deleteLine(){
-       #特定の行を探して
        $start =  (Select-String -Pattern "#Added by uwakuByeByeController" -Path $this.hosts).ToString().Split(":")[2]
        $end = (Select-String -Pattern "#End of Section by uwakuByeByeController" -Path $this.hosts).ToString().Split(":")[2]
-
-       #消す
-       $strBuilder = Get-Content -Path $this.hosts | Select-Object -First ($start-1)
-       $leftStrBuilder = Get-Content -Path $this.hosts | Select-Object -Skip $end
+       $strBuilder = Get-Content -Path $this.hosts -Encoding UTF8 | Select-Object -First ($start-1)
+       $leftStrBuilder = Get-Content -Path $this.hosts -Encoding UTF8 | Select-Object -Skip $end
        for ($i = 0; $i -lt $leftStrBuilder.Length; $i++){ 
            $strBuilder += $leftStrBuilder[$i] + "`r`n"
        }
 
-       $strBuilder > $this.hosts
+       $strBuilder | Out-File $this.hosts -Encoding UTF8
 
    }
+
 }

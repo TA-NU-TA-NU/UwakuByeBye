@@ -29,6 +29,7 @@ Write-Output "よろしくげんじつ"
 
 $controllerObj.addLine()
 
+Clear-DnsClientCache
 Start-Sleep -Seconds $waitTime
 
 $controllerObj.deleteLine()
